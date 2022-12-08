@@ -22,15 +22,15 @@ export default function DashboardAppPage() {
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title={translate("Panel.cardTitle")} total={714000} icon={'ant-design:android-filled'} />
+            <AppWidgetSummary title={translate("Panel.cardTitle")} total={714000} icon={'ant-design:user'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title={translate("Panel.cardTitle2")} total={1352831} color="info" icon={'ant-design:apple-filled'} />
+            <AppWidgetSummary title={translate("Panel.cardTitle2")} total={1352831} color="info" icon={'ant-design:user'} />
           </Grid>
  
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title={translate("Panel.cardTitle3")} total={1723315} color="warning" icon={'ant-design:windows-filled'} />
+            <AppWidgetSummary title={translate("Panel.cardTitle3")} total={1723315} color="warning" icon={'ant-design:user'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>

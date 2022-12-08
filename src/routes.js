@@ -6,6 +6,7 @@ import SimpleLayout from './layouts/simple';
 import Page404 from './pages/Page404';
 import DashboardAppPage from './pages/DashboardAppPage';
 import CustomerDetails from './pages/CustomerDetails';
+import LoginPage from './pages/LoginPage';
 
 // ----------------------------------------------------------------------
 
@@ -19,6 +20,12 @@ export default function Router() {
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'customer-details/customerID=:id', element: <CustomerDetails /> }
       ],
+    },
+    {
+      path: 'login',
+      element: (
+          <LoginPage />
+      )
     },
     {
       element: <SimpleLayout />,
