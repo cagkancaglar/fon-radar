@@ -1,20 +1,32 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 // @mui
-import { Container, Box, Paper, Grid, Fade, Modal, Button, Stack, TextField, Typography, Backdrop } from '@mui/material';
+import {
+  Container,
+  Box,
+  Paper,
+  Grid,
+  Fade,
+  Modal,
+  Button,
+  Stack,
+  TextField,
+  Typography,
+  Backdrop,
+} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { LoadingButton } from '@mui/lab';
-// sections
-// import CustomerList from 'src/sections/app/CustomerList';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 import CustomerService from '../services/CustomerService';
 import Iconify from '../components/iconify/Iconify';
-
+import useLocales from '../hooks/useLocales';
 
 // ----------------------------------------------------------------------
 
 export default function CustomerDetails() {
-
+  const { translate } = useLocales();
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2029' : '#fff',
@@ -46,7 +58,7 @@ export default function CustomerDetails() {
     taxNumber: '',
     taxOffice: '',
     invoiceCount: '',
-    contactNumber: ''
+    contactNumber: '',
   });
 
   const [customer, setcustomer] = useState({});
@@ -77,21 +89,20 @@ export default function CustomerDetails() {
   const update = async (id) => {
     const updated = await services.updateCustomer(id, customer);
     if (updated.status === 200) {
-      handleEditClose()
+      handleEditClose();
       setApiState(true);
       setTimeout(() => {
         setApiState(false);
       }, 3000);
     }
-  }
+  };
   useEffect(() => {
     const fetchData = async (id) => {
       return await services.getByCustomerId(id);
     };
     fetchData(id).then((data) => {
       setcustomer(data.data);
-      setTimeout(() => {
-      }, 3000);
+      setTimeout(() => {}, 3000);
     });
   }, []);
 
@@ -104,13 +115,28 @@ export default function CustomerDetails() {
   return (
     <>
       <Helmet>
-        <title> Müşteri Detayları - Fon Radar</title>
+        <title> Müşteri Detayları - Fon Radar </title>
       </Helmet>
 
       <Container maxWidth="xl">
-      <Stack sx={{py:2}} direction="row" alignItems="center" justifyContent="flex-end">
-          <Button onClick={handleEditOpen} sx={{ mr: 2 }} variant="contained" to="" startIcon={<Iconify icon="material-symbols:edit" />}>
-            Bilgileri Düzenle
+        <Stack sx={{ py: 2, mb: 3 }} direction="row" alignItems="center" justifyContent="flex-end">
+          <Button
+            to={'/dashboard'}
+            LinkComponent={Link}
+            sx={{ mr: 2 }}
+            variant="contained"
+            startIcon={<Iconify icon="material-symbols:edit" />}
+          >
+            {translate('CustomerDetails.button')}
+          </Button>
+          <Button
+            onClick={handleEditOpen}
+            sx={{ mr: 2 }}
+            variant="contained"
+            to=""
+            startIcon={<Iconify icon="material-symbols:edit" />}
+          >
+            {translate('CustomerDetails.button2')}
           </Button>
           <Modal
             open={editOpen}
@@ -120,14 +146,14 @@ export default function CustomerDetails() {
           >
             <Box sx={style}>
               <Typography textAlign={'center'} variant="subtitle1" gutterBottom component="div">
-                 Düzenle
+              {translate("CustomerDetails.button2")}
               </Typography>
               <Stack spacing={3}>
                 <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
                   name="companyName"
-                  label="Şirket İsmi"
+                  label={translate("Panel.tableTitle")}
                   value={customer.companyName}
                   onChange={handleChange}
                 />
@@ -135,15 +161,15 @@ export default function CustomerDetails() {
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
                   name="taxNumber"
-                  label="Vergi Numarası"
+                  label={translate("Panel.tableTitle2")}
                   value={customer.taxNumber}
                   onChange={handleChange}
                 />
                 <TextField
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
-                  name="taxOffice"
-                  label="Vergi Dairesi"
+                  name= "taxOffice"
+                  label={translate("Panel.tableTitle3")}
                   value={customer.taxOffice}
                   onChange={handleChange}
                 />
@@ -151,7 +177,7 @@ export default function CustomerDetails() {
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
                   name="invoiceCount"
-                  label="Fatura Adeti"
+                  label={translate("Panel.tableTitle4")}
                   value={customer.invoiceCount}
                   onChange={handleChange}
                 />
@@ -159,18 +185,12 @@ export default function CustomerDetails() {
                   required
                   style={{ backgroundColor: 'white', borderRadius: 10 }}
                   name="contactNumber"
-                  label="İletişim Numarası"
+                  label={translate("Panel.tableTitle5")}
                   value={customer.contactNumber}
                   onChange={handleChange}
                 />
-                <LoadingButton
-                  onClick={() => update(id)}
-                  fullWidth
-                  size="large"
-                  type="submit"
-                  variant="contained"
-                >
-                  Kaydet
+                <LoadingButton onClick={() => update(id)} fullWidth size="large" type="submit" variant="contained">
+                {translate("CustomerDetails.button5")}
                 </LoadingButton>
               </Stack>
             </Box>
@@ -182,7 +202,7 @@ export default function CustomerDetails() {
             to=""
             startIcon={<Iconify icon="mdi:delete-forever" />}
           >
-            Kayıt Sil
+            {translate('CustomerDetails.button3')}
           </Button>
           <Modal
             aria-labelledby="transition-modal-title"
@@ -201,10 +221,10 @@ export default function CustomerDetails() {
                 </Typography>
                 <Stack sx={{ mt: 5 }} direction="row" alignItems="center" justifyContent="space-evenly">
                   <Button sx={{ mr: 2 }} onClick={() => onDelete(id)} variant="outlined" color="error">
-                    Sil
+                  {translate("CustomerDetails.button3")}
                   </Button>
                   <Button sx={{ ml: 2 }} onClick={handleClose} variant="outlined" color="info">
-                    Vazgeç
+                    {translate("CustomerDetails.button4")}
                   </Button>
                 </Stack>
               </Box>
@@ -214,38 +234,37 @@ export default function CustomerDetails() {
         <Box sx={{ flexGrow: 3 }}>
           <Grid container spacing={4} columns={18}>
             <Grid item xs={9}>
-              <Item>Şirket İsmi:</Item>
+              <Item>{translate('CustomerDetails.listItem')}</Item>
             </Grid>
             <Grid item xs={9}>
               <Item>{customer.companyName}</Item>
             </Grid>
             <Grid item xs={9}>
-              <Item>Vergi Numarası:</Item>
+              <Item>{translate('CustomerDetails.listItem2')}</Item>
             </Grid>
             <Grid item xs={9}>
               <Item>{customer.taxNumber}</Item>
             </Grid>
             <Grid item xs={9}>
-              <Item>Vergi Dairesi</Item>
+              <Item>{translate('CustomerDetails.listItem3')}</Item>
             </Grid>
             <Grid item xs={9}>
               <Item>{customer.taxOffice}</Item>
             </Grid>
             <Grid item xs={9}>
-              <Item>Fatura Adeti</Item>
+              <Item>{translate('CustomerDetails.listItem4')}</Item>
             </Grid>
             <Grid item xs={9}>
               <Item>{customer.invoiceCount}</Item>
             </Grid>
             <Grid item xs={9}>
-              <Item>İletişim Numarası</Item>
+              <Item>{translate('CustomerDetails.listItem5')}</Item>
             </Grid>
             <Grid item xs={9}>
               <Item>{customer.contactNumber}</Item>
             </Grid>
           </Grid>
         </Box>
-        
       </Container>
     </>
   );

@@ -11,7 +11,8 @@ import Iconify from '../../components/iconify/Iconify';
 import { options } from '../../_mock/MuiTableOptions';
 // service
 import CustomerService from '../../services/CustomerService';
-
+// hooks
+import useLocales from '../../hooks/useLocales';
 
 // ----------------------------------------------------------------------
 
@@ -28,9 +29,9 @@ const style = {
   p: 4,
 };
 
-export default function CustomerList() {
+export default function UserList() {
   const services = new CustomerService();
- 
+  const { translate } = useLocales();
   const [data, setData] = useState({
     companyName: '',
     taxNumber: '',
@@ -81,7 +82,6 @@ export default function CustomerList() {
     services.getCustomer().then((result) => setCustomer(result.data));
   };
 
-
    useEffect(() => {
     getData();
   }, []);// eslint-disable-line react-hooks/exhaustive-deps
@@ -89,7 +89,7 @@ export default function CustomerList() {
   const columns = [
     {
       name: 'companyName',
-      label: `Company Name`,
+      label: `${translate('Panel.tableTitle')}`,
       options: {
         filter: true,
         sort: true,
@@ -97,7 +97,7 @@ export default function CustomerList() {
     },
     {
       name: 'taxNumber',
-      label: `Tax Number`,
+      label: `${translate('Panel.tableTitle2')}`,
       options: {
         filter: true,
         sort: true,
@@ -105,7 +105,7 @@ export default function CustomerList() {
     },
     {
       name: 'taxOffice',
-      label: `Tax Office`,
+      label: `${translate('Panel.tableTitle3')}`,
       options: {
         filter: true,
         sort: true,
@@ -113,7 +113,7 @@ export default function CustomerList() {
     },
     {
       name: 'invoiceCount',
-      label: `Invoice Count`,
+      label: `${translate('Panel.tableTitle4')}`,
       options: {
         filter: true,
         sort: true,
@@ -121,7 +121,7 @@ export default function CustomerList() {
     },
     {
       name: 'contactNumber',
-      label: `Contact Number`,
+      label: `${translate('Panel.tableTitle5')}`,
       options: {
         filter: true,
         sort: true,
@@ -129,7 +129,7 @@ export default function CustomerList() {
     },
     {
       name: 'id',
-      label: `Details`,
+      label: `${translate('Panel.tableTitle6')}`,
       options: {
         filter: false,
         sort: false,
@@ -139,10 +139,10 @@ export default function CustomerList() {
             <Button
               variant="contained"
               size="small"
-              to={'/dashboard/customer-detail/customerID=' + customer[dataIndex].id}
+              to={'/dashboard/customer-details/customerID=' + customer[dataIndex].id}
               LinkComponent={RouterLink}
             >
-              Details
+              {translate('Panel.tableTitle6')}
             </Button>
           );
         },
@@ -159,7 +159,7 @@ export default function CustomerList() {
           to=""
           startIcon={<Iconify icon="eva:plus-fill" />}
         >
-          Add
+          {translate('Panel.button')}
         </Button>
       </Stack>
       <Modal
@@ -169,14 +169,16 @@ export default function CustomerList() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          
+          <Typography textAlign={'center'} variant="subtitle1" gutterBottom component="div">
+          {translate('Panel.tableTitle6')}
+          </Typography>
           <FormProvider onSubmit={(e) => onSubmit(e)}>
             <Stack spacing={3}>
               <TextField
                 required
                 style={{ backgroundColor: 'white', borderRadius: 10 }}
                 name="companyName"
-                label="companyName"
+                label={translate('Panel.tableTitle')}
                 value={data.companyName}
                 onChange={handleChange}
               />
@@ -184,7 +186,7 @@ export default function CustomerList() {
                 required
                 style={{ backgroundColor: 'white', borderRadius: 10 }}
                 name="taxNumber"
-                label="taxNumber"
+                label={translate('Panel.tableTitle2')}
                 value={data.taxNumber}
                 onChange={handleChange}
               />
@@ -192,7 +194,7 @@ export default function CustomerList() {
                 required
                 style={{ backgroundColor: 'white', borderRadius: 10 }}
                 name="taxOffice"
-                label="taxOffice"
+                label={translate('Panel.tableTitle3')}
                 value={data.taxOffice}
                 onChange={handleChange}
               />
@@ -200,7 +202,7 @@ export default function CustomerList() {
                 required
                 style={{ backgroundColor: 'white', borderRadius: 10 }}
                 name="invoiceCount"
-                label="invoiceCount"
+                label={translate('Panel.tableTitle4')}
                 value={data.invoiceCount}
                 onChange={handleChange}
               />
@@ -208,19 +210,18 @@ export default function CustomerList() {
                 required
                 style={{ backgroundColor: 'white', borderRadius: 10 }}
                 name="contactNumber"
-                label="contactNumber"
+                label={translate('Panel.tableTitle5')}
                 value={data.contactNumber}
                 onChange={handleChange}
               />
               <LoadingButton onClick={(e) => onSubmit(e)} fullWidth size="large" type="submit" variant="contained">
-              Customer
+              {translate('Panel.button')}
               </LoadingButton>
             </Stack>
           </FormProvider>
         </Box>
       </Modal>
-  
-      <MuiTable title={'Customers'} data={customer} columns={columns} options={options} />
+      <MuiTable title={translate("Panel.tableHeader")} data={customer} columns={columns} options={options} />
     </>
   );
 }

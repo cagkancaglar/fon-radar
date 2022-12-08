@@ -6,6 +6,9 @@ import { Box, Stack, AppBar, Toolbar, IconButton } from '@mui/material';
 import { bgBlur } from '../../../utils/cssStyles';
 // components
 import Iconify from '../../../components/iconify';
+//
+import AccountPopover from './AccountPopover';
+import LanguagePopover from './LanguagePopover';
 
 // ----------------------------------------------------------------------
 
@@ -54,7 +57,8 @@ export default function Header({ onOpenNav }) {
 
         <Box sx={{ flexGrow: 1 }} />
 
-        
+        <LanguagePopover />
+          <AccountPopover />
       </StyledToolbar>
     </StyledRoot>
   );

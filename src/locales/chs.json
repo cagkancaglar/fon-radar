@@ -1,0 +1,58 @@
+{
+    "Login" : {
+        "sidebarTitle": "欢迎",
+        "formTitle": "登录 Fon 雷达",
+        "formDesc": "没有账户 ?",
+        "formHr": "或者",
+        "formInput": "电子邮件",
+        "formInput2": "密码",
+        "formCheckbox": "记得我",
+        "formLabel": "忘记密码 ?",
+        "formButton": "登录"
+    },
+    "Panel" : {
+        "sidebarTitle": "行政人员",
+        "sidebarItem": "客户名单",
+        "navbarItem":"行政人员",
+        "navbarItem2":"info@fonradar.com",
+        "navbarItem3":"主页",
+        "navbarItem4":"轮廓",
+        "navbarItem5":"设置",
+        "navbarItem6":"登出",
+        "button": "添加客户",
+        "cardTitle":"客户总数",
+        "cardTitle2":"客户总数",
+        "cardTitle3":"客户总数",
+        "cardTitle4":"客户总数",
+        "icon":"搜索",
+        "icon2":"CSV 下载",
+        "icon3":"打印",
+        "icon4":"显示列",
+        "icon5":"筛选",
+        "tableTitle": "公司名称",
+        "tableTitle2": "税号",
+        "tableTitle3": "税务局",
+        "tableTitle4": "发票数量",
+        "tableTitle5": "联系电话",
+        "tableTitle6": "细节",
+        "tableHeader":"顾客",
+        "tableIcon":"搜索",
+        "tableIcon2":"CSV 下载",
+        "tableIcon3": "打印",
+        "tableIcon4":"显示列",
+        "tableIcon5":"过滤器"
+        
+    },
+    "CustomerDetails": {
+        "button": "后退",
+        "button2": "编辑",
+        "button3": "删除",
+        "button4": "取消",
+        "button5": "节省",
+        "listItem": "公司名称:",
+        "listItem2": "税号:",
+        "listItem3": "税务局:",
+        "listItem4": "发票数量:",
+        "listItem5": "接触:"
+    }
+}

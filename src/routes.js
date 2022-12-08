@@ -5,7 +5,7 @@ import SimpleLayout from './layouts/simple';
 //
 import Page404 from './pages/Page404';
 import DashboardAppPage from './pages/DashboardAppPage';
-import CustomerDetail from './pages/CustomerDetail';
+import CustomerDetails from './pages/CustomerDetails';
 
 // ----------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ export default function Router() {
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
-        { path: 'customer-detail/customerID=:id', element: <CustomerDetail /> }
+        { path: 'customer-details/customerID=:id', element: <CustomerDetails /> }
       ],
     },
     {

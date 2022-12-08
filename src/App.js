@@ -1,19 +1,20 @@
 // routes
+import ThemeLocalization from './components/ThemeLocalization';
+import RtlLayout from './components/RtlLayout';
 import Router from './routes';
 // theme
 import ThemeProvider from './theme';
-// components
-import ScrollToTop from './components/scroll-to-top';
-import { StyledChart } from './components/chart';
 
 // ----------------------------------------------------------------------
 
 export default function App() {
   return (
     <ThemeProvider>
-      <ScrollToTop />
-      <StyledChart />
-      <Router />
+      <ThemeLocalization>
+        <RtlLayout>
+          <Router />
+        </RtlLayout>
+      </ThemeLocalization>
     </ThemeProvider>
   );
 }

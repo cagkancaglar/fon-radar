@@ -6,17 +6,17 @@ export const options = {
   rowsPerPageOptions: [10, 25, 50, 100, 250],
   textLabels: {
     body: {
-      noMatch: 'Listede kayıt bulunmamaktadır.',
+      noMatch: 'There is no record in the list.',
     },
     pagination: {
-      next: 'Sonraki Sayfa',
-      previous: 'Önceki Sayfa',
-      rowsPerPage: 'Listele',
+      next: 'Next Page',
+      previous: 'Previous Page',
+      rowsPerPage: 'List',
     },
     filter: {
-      all: 'Tüm Kayıtlar',
-      title: 'Filtreler',
-      reset: 'Temizle',
+      all: 'All',
+      title: 'Filter',
+      reset: 'Clear',
     },
     selectedRows: {
       text: 'rows has been deleted',
@@ -25,10 +25,10 @@ export const options = {
     },
     toolbar: {
       // search: 'Arama',
-      downloadCsv: 'CSV İndir',
-      print: 'Yazdır',
-      viewColumns: 'Kolonları Göster',
-      filterTable: 'Filtrele',
+      downloadCsv: 'CSV Download',
+      print: 'Print',
+      viewColumns: 'Show Columns',
+      filterTable: 'Filter',
     },
   }
 };
