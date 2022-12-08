@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 // @mui
-import { Link, Stack, IconButton, InputAdornment, TextField, Checkbox } from '@mui/material';
+import { Link, Stack, IconButton, InputAdornment, TextField, Checkbox, FormControlLabel } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
-// hooks
-// import useIsMountedRef from '../../hooks/useIsMountedRef';
 // components
 import Iconify from '../../components/iconify';
 import FormProvider from '../../components/FormProvider';
@@ -19,7 +17,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 export default function LoginForm() {
   const navigate = useNavigate();
-  // const isMountedRef = useIsMountedRef();
   const [showPassword, setShowPassword] = useState(false);
   const [data, setData] = useState([]);
   const [login, setLogin] = useState({ email: '', password: '' });
@@ -94,7 +91,7 @@ export default function LoginForm() {
       </Stack>
 
       <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
-        <Checkbox name="remember" label="Remember me" />
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Remember me" />
         <Link variant="subtitle2" underline="hover">
           Forgot password?
         </Link>

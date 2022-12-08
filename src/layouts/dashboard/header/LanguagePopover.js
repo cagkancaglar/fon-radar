@@ -2,7 +2,7 @@ import { useState } from 'react';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, MenuItem, Stack, IconButton, Popover } from '@mui/material';
-
+// hooks
 import useLocales from '../../../hooks/useLocales';
 
 
@@ -26,6 +26,7 @@ export default function LanguagePopover() {
           padding: 0,
           width: 44,
           height: 44,
+          mx:2,
           ...(open && {
             bgcolor: (theme) => alpha(theme.palette.primary.main, theme.palette.action.focusOpacity),
           }),

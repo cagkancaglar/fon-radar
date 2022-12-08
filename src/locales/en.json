@@ -52,6 +52,7 @@
         "listItem2": "Tax Number:",
         "listItem3": "Tax Office:",
         "listItem4": "Invoice Count:",
-        "listItem5": "Contact:"
+        "listItem5": "Contact:",
+        "alert": "record will be deleted!"
     }
 }

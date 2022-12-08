@@ -22,7 +22,7 @@ const StyledRoot = styled(AppBar)(({ theme }) => ({
   ...bgBlur({ color: theme.palette.background.default }),
   boxShadow: 'none',
   [theme.breakpoints.up('lg')]: {
-    width: `calc(100% - ${NAV_WIDTH + 1}px)`,
+    // width: `calc(100% - ${NAV_WIDTH + 1}px)`,
   },
 }));
 

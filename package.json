@@ -1,8 +1,5 @@
 {
-  "name": "@minimal/material-kit-react",
-  "author": "minimals.cc",
-  "licence": "MIT",
-  "version": "1.6.0",
+  "name": "fon-radar",
   "private": false,
   "scripts": {
     "start": "react-scripts start",

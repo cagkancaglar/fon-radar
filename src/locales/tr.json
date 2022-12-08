@@ -52,6 +52,7 @@
         "listItem2": "Vergi Numarası:",
         "listItem3": "Vergi Dairesi:",
         "listItem4": "Fatura Adeti:",
-        "listItem5": "İletişim:"
+        "listItem5": "İletişim:",
+        "alert": "adlı kayıt silinecektir!"
     }
 }

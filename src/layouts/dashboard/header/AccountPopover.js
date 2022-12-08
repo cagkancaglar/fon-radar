@@ -1,24 +1,34 @@
 import { useState } from 'react';
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
 // mocks_
 import account from '../../../_mock/account';
-
+// hooks
+import useLocales from '../../../hooks/useLocales';
 // ----------------------------------------------------------------------
 
 const MENU_OPTIONS = [
   {
-    label: 'Home',
+    labelTr: 'Ana Sayfa',
+    labelEn: 'Home',
+    labelCn: '主页',
+    labelHe: 'דף הבית',
     icon: 'eva:home-fill',
   },
   {
-    label: 'Profile',
+    labelTr: 'Profil',
+    labelEn: 'Profile',
+    labelCn: '轮廓',
+    labelHe: 'פּרוֹפִיל',
     icon: 'eva:person-fill',
   },
   {
-    label: 'Settings',
+    labelTr: 'Ayarlar',
+    labelEn: 'Settings',
+    labelCn: '设置',
+    labelHe: 'הגדרות',
     icon: 'eva:settings-2-fill',
   },
 ];
@@ -28,6 +38,9 @@ const MENU_OPTIONS = [
 export default function AccountPopover() {
   const [open, setOpen] = useState(null);
   const navigate = useNavigate();
+  const lang = localStorage.getItem("i18nextLng")
+  const { translate } = useLocales();
+  
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
@@ -38,9 +51,9 @@ export default function AccountPopover() {
   };
 
   const logout = () => {
-    localStorage.removeItem("guid");
-    navigate("/login")
-  }
+    localStorage.removeItem('guid');
+    navigate('/login');
+  };
 
   return (
     <>
@@ -56,7 +69,7 @@ export default function AccountPopover() {
               height: '100%',
               borderRadius: '50%',
               position: 'absolute',
-              marginTop: "50%",
+              marginTop: '50%',
               bgcolor: (theme) => alpha(theme.palette.grey[900], 0.8),
             },
           }),
@@ -97,8 +110,14 @@ export default function AccountPopover() {
 
         <Stack sx={{ p: 1 }}>
           {MENU_OPTIONS.map((option) => (
-            <MenuItem key={option.label} onClick={handleClose}>
-              {option.label}
+            <MenuItem key={option.labelTr} onClick={handleClose}>
+              {lang === 'tr'
+                ? option.labelTr
+                : lang === 'en'
+                ? option.labelEn
+                : lang === 'he'
+                ? option.labelHe
+                : option.labelCn}
             </MenuItem>
           ))}
         </Stack>
@@ -106,7 +125,7 @@ export default function AccountPopover() {
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <MenuItem onClick={logout} sx={{ m: 1 }}>
-          Logout
+          {translate("Panel.navbarItem6")}
         </MenuItem>
       </Popover>
     </>

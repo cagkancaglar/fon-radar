@@ -17,7 +17,6 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { LoadingButton } from '@mui/lab';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import CustomerService from '../services/CustomerService';
 import Iconify from '../components/iconify/Iconify';
@@ -123,15 +122,15 @@ export default function CustomerDetails() {
           <Button
             to={'/dashboard'}
             LinkComponent={Link}
-            sx={{ mr: 2 }}
+            sx={{ mx: 1 }}
             variant="contained"
-            startIcon={<Iconify icon="material-symbols:edit" />}
+            startIcon={<Iconify icon="material-symbols:arrow-back" />}
           >
             {translate('CustomerDetails.button')}
           </Button>
           <Button
             onClick={handleEditOpen}
-            sx={{ mr: 2 }}
+            sx={{ mx: 1 }}
             variant="contained"
             to=""
             startIcon={<Iconify icon="material-symbols:edit" />}
@@ -217,7 +216,7 @@ export default function CustomerDetails() {
             <Fade in={open}>
               <Box sx={style}>
                 <Typography textAlign={'center'} id="transition-modal-title" variant="subtitle2" component="h2">
-                  {customer.companyName} adlı kayıt silinecektir!
+                  {customer.companyName} {translate("CustomerDetails.alert")}
                 </Typography>
                 <Stack sx={{ mt: 5 }} direction="row" alignItems="center" justifyContent="space-evenly">
                   <Button sx={{ mr: 2 }} onClick={() => onDelete(id)} variant="outlined" color="error">

@@ -53,6 +53,7 @@
         "listItem2": "税号:",
         "listItem3": "税务局:",
         "listItem4": "发票数量:",
-        "listItem5": "接触:"
+        "listItem5": "接触:",
+        "alert":"记录将被删除"
     }
 }

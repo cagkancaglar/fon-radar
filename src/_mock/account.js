@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------
 
 const account = {
-  displayName: 'Sistem Yöneticisi',
+  displayName: 'Fon Radar',
   email: 'info@fonradar.com',
   photoURL: '/assets/images/fonradar.png',
 };

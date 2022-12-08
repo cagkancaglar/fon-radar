@@ -7,7 +7,10 @@ const icon = (name) => <SvgColor src={`/assets/icons/navbar/${name}.svg`} sx={{ 
 
 const navConfig = [
   {
-    title: 'Customer List',
+    title: 'Müşteri Listesi',
+    titleEn: 'Customer List',
+    titleCn: '客户名单',
+    titleHe: 'רשימת לקוחות',
     path: '/dashboard/app',
     icon: icon('ic_user'),
   }

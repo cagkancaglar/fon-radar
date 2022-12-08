@@ -30,7 +30,9 @@ NavItem.propTypes = {
 };
 
 function NavItem({ item }) {
-  const { title, path, icon, info } = item;
+  const { title, titleEn, titleCn, titleHe, path, icon, info } = item;
+  const lang = localStorage.getItem('i18nextLng');
+
 
   return (
     <StyledNavItem
@@ -46,7 +48,10 @@ function NavItem({ item }) {
     >
       <StyledNavItemIcon>{icon && icon}</StyledNavItemIcon>
 
-      <ListItemText disableTypography primary={title} />
+      <ListItemText disableTypography 
+          primary={lang === 'tr' ? title : lang === 'en' ? titleEn : lang === 'he' ? titleHe : titleCn}
+
+          />
 
       {info && info}
     </StyledNavItem>
