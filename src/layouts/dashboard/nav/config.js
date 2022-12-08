@@ -10,13 +10,7 @@ const navConfig = [
     title: 'dashboard',
     path: '/dashboard/app',
     icon: icon('ic_analytics'),
-  },
-  {
-    title: 'user',
-    path: '/dashboard/user',
-    icon: icon('ic_user'),
-  },
-
+  }
 ];
 
 export default navConfig;
