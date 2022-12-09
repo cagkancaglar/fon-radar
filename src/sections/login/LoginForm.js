@@ -13,7 +13,8 @@ import axios from 'axios';
 // uuid
 import { v4 as uuidv4 } from 'uuid';
 
-// ---------------------------------------------------------------------- 
+
+// ----------------------------------------------------------------------
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -42,10 +43,14 @@ export default function LoginForm() {
         .then((res) => setData(res.data));
   }  
   
+  const guid = JSON.parse(localStorage.getItem('guid'));
+
   useEffect(() => {
     getData()
+    if (guid) {
+      navigate('/dashboard/app');
+    } 
   }, []);
-
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -61,9 +66,9 @@ export default function LoginForm() {
     data.find((user) => {
       const success = (login.email === user.username && login.password === user.password)
       if (success) {
-        const guid = uuidv4()
-        localStorage.setItem("guid",JSON.stringify(guid))
-        navigate('/dashboard/app')
+        const guid = uuidv4();
+        localStorage.setItem('guid', JSON.stringify(guid));
+        navigate('/dashboard/app');
       }
     });
   };

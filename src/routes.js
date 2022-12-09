@@ -22,15 +22,11 @@ export default function Router() {
       ],
     },
     {
-      path: 'login',
-      element: (
-          <LoginPage />
-      )
-    },
-    {
+      path: '/',
       element: <SimpleLayout />,
       children: [
-        { element: <Navigate to="/dashboard/app" />, index: true },
+        { path: '/', element: <Navigate to="/login" /> },
+        { path: 'login', element: <LoginPage /> },
         { path: '404', element: <Page404 /> },
         { path: '*', element: <Navigate to="/404" /> },
       ],

@@ -54,5 +54,10 @@
         "listItem4": "Fatura Adeti:",
         "listItem5": "İletişim:",
         "alert": "adlı kayıt silinecektir!"
+    },
+    "404": {
+        "title": "Üzgünüz, aradığınız sayfayı bulamadık!",
+        "desc": "Üzgünüz, aradığınız sayfayı bulamadık. Belki de URL'yi yanlış yazdınız? Doğru yazıp yazmadığınızı kontrol ettiğinizden emin olun.",
+        "button":" Ana Sayfaya Dön"
     }
 }
